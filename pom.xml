@@ -25,6 +25,15 @@
         <version>7.10.2</version>
         <scope>test</scope>
     </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>6.0.1</version> </dependency>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>7.9.2</version> </dependency>
 </dependencies>
 <properties>
 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
