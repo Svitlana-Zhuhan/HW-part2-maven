@@ -7,11 +7,16 @@ import lesson29_jenkins.GaragePage;
 import lesson29_jenkins.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 @Epic("Garage")
 @Feature("Add Car")
@@ -24,10 +29,15 @@ public class AddCarGuestTest {
     HomePage homePage;
     GaragePage garagePage;
 
+
     @BeforeMethod
-    public void setup() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    public void setup() throws MalformedURLException {
+        ChromeOptions options = new ChromeOptions();
+        RemoteWebDriver driver = new RemoteWebDriver(
+                new URL("http://chrome:4444/wd/hub"),
+                options);
+        //WebDriverManager.chromedriver().setup();
+        //driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://guest:welcome2qauto@qauto.forstudy.space/");
         homePage = new HomePage(driver);
@@ -51,18 +61,13 @@ public class AddCarGuestTest {
         softAssert.assertEquals(garagePage.getMileageValue(), "20", "Mileage value is incorrect");
         softAssert.assertTrue(garagePage.isCarImageDisplayed(), "Car image not displayed");
         softAssert.assertTrue(garagePage.imageUrlEndsWith("audi.png"), "Image source does not end with audi.png");
-
-        /*softAssert.assertTrue(garagePage.getCarName("Audi TT"), "Car not displayed");
-        softAssert.assertTrue(garagePage.isTodayDisplayed(), "Date is not today");
-        softAssert.assertTrue(garagePage.isMileageCorrect("20"), "Mileage is not correct");
-        softAssert.assertTrue(garagePage.isCarImageVisible(), "Image not visible");
-        softAssert.assertTrue(garagePage.isImageUrlCorrect(), "Image link is not correct");
-*/
         softAssert.assertAll();
     }
 
     @AfterMethod
     public void tearDown() {
-        if (driver != null) driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
