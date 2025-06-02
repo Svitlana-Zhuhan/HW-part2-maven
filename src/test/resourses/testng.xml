@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="QAuto Tests">
+    <test name="Garage Add Car Test">
+        <classes>
+            <class name="lesson29_jenkinsTest.AddCarGuestTest"/>
+        </classes>
+    </test>
+</suite>
