@@ -36,8 +36,6 @@ public class AddCarGuestTest {
         RemoteWebDriver driver = new RemoteWebDriver(
                 new URL("http://selenium-hub:4444/wd/hub"),
                 options);
-        //WebDriverManager.chromedriver().setup();
-        //driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://guest:welcome2qauto@qauto.forstudy.space/");
         homePage = new HomePage(driver);
