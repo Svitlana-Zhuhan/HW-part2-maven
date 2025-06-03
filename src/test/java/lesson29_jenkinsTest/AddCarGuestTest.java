@@ -34,7 +34,7 @@ public class AddCarGuestTest {
     public void setup() throws MalformedURLException {
         ChromeOptions options = new ChromeOptions();
         RemoteWebDriver driver = new RemoteWebDriver(
-                new URL("http://chrome:4444/wd/hub"),
+                new URL("http://selenium-hub:4444/wd/hub"),
                 options);
         //WebDriverManager.chromedriver().setup();
         //driver = new ChromeDriver();
